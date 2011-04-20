@@ -8,7 +8,7 @@
 
 (defn default-sidebar []
   [:div
-   [:h3 "New Post"]])
+   [:h3 "Default sidebar"]])
 
 (defn default-footer []
   [:h3 "Made by Marcelo Giorgi."])

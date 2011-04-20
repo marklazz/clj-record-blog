@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+#header-title {
+  padding-bottom: 20px;
+}
+
 #sidebar {
     float: left;
     width: 20%;

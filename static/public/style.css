@@ -1,0 +1,21 @@
+#header {
+    clear: float;
+    width: 100%;
+}
+
+#sidebar {
+    float: left;
+    width: 20%;
+}
+#main {
+    clear: both;
+    float: left;
+    width: 80%;
+}
+#footer {
+    clear: both;
+    float: left;
+}
+#footer h3 {
+    font-size: 12px;
+}

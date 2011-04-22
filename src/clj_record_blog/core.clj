@@ -1,5 +1,6 @@
 (ns clj-record-blog.core
   (:use [clj-record.boot]
+        [clj-record-blog.middleware :as mdw]
         [compojure.core]
         [hiccup.core])
   (:require [compojure.route :as route]
@@ -8,9 +9,6 @@
             [clj-record-blog.controllers.posts-controller :as posts_controller]
             [clj-record-blog.controllers.comments-controller :as comments_controller]
             [compojure.handler :as handler]))
-
-;(GET "/user/:id" [id]
-;  (str "<h1>Hello user " id "</h1>"))
 
 (defroutes main-routes
 ;  (GET "/login/:user"
@@ -33,5 +31,15 @@
 ;(decorate main-routes
           ;(with-session {:type :memory, :expires 600}))
 
+;(def app
+;  (handler/site main-routes))
 (def app
-  (handler/site main-routes))
+     (-> main-routes
+         mdw/wrap-request-logging))
+;(defn hello-world [request] 
+    ;{:status  200 
+     ;:headers {} 
+     ;:body    "Hello World"}) 
+;(run-server {:port 8080} 
+    ;"/*" (servlet hello-world))
+

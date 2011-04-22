@@ -26,7 +26,6 @@
   layout {
           :main (show-post post)
           :sidebar (default-sidebar)
-          :footer (default-footer)
          }
   )
 )

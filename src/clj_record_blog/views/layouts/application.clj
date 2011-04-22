@@ -5,6 +5,17 @@
 
 (defhtml my-meta [] [:meta {:http-equiv "Content-type" :content "text/html;charset=UTF-8"}])
 
+(def web-app-title "Sample compojure web app (with clj-record)")
+
+(defhtml default-header []
+  [:div
+    [:h1
+      (link-to "/" web-app-title)
+    ]
+    [:h2 "By Marcelo Giorgi"]
+   ]
+)
+
 (defn default-main [] [:div "Main!"])
 
 (defn default-sidebar []
@@ -12,9 +23,11 @@
    [:li (link-to "/" "Home")]])
 
 (defn default-footer []
-  [:h3 "Made by Marcelo Giorgi."])
-
-(def web-app-title "Sample compojure web app (with clj-record)")
+  [:div#footer
+   "Design by "
+   (link-to "http://www.minimalistic-design.net" "Minimalistic Design")
+   ]
+)
 
 (defn layout [yield]
     (html5  [:head
@@ -26,10 +39,13 @@
               [:div#wrap
                 [:div#top]
                 [:div#content
-                  [:div.header (:header yield)]
+                  [:div.header (default-header)]
                   [:div.breadcrumbs
-                    (link-to "#" "Home")
-                    " - You are here"
+                    (link-to "/" "Home")
+                    (if (= "/" "/") ; obtain the request here to determine relative path
+                      " - You are here"
+                      ""
+                    )
                   ]
                   [:div.middle
                     (:main yield)
@@ -47,10 +63,7 @@
                   [:div#clear]
                  [:div#bottom]
                 ]
-              [:div#footer
-                "Design by "
-                (link-to "http://www.minimalistic-design.net" "Minimalistic Design")
-              ]
+                (default-footer)
             ]
   )
 )

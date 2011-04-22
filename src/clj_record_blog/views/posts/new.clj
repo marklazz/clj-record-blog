@@ -7,10 +7,8 @@
 
 (defn render [] (
   layout {
-          :main (post-form {} "false"
-                           )
+          :main (post-form {} "false")
           :sidebar (default-sidebar)
-          :footer (default-footer)
          }
   )
 )

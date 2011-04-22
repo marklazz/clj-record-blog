@@ -5,18 +5,6 @@
         [hiccup.page-helpers]
         [hiccup.core]))
 
-;(defhtml posts-header []
-;  [:div#header-title [:h1 "Post lists"]])
-
-(defhtml posts-header []
-  [:div
-    [:h1
-      (link-to "/" web-app-title)
-    ]
-    [:h2 "By Marcelo Giorgi"]
-   ]
-)
-
 (defhtml posts-list []
   [:div [:ul
             (for [x (post/find-records ["1=1"])]
@@ -27,4 +15,4 @@
   [:ul
    [:li (link-to "/posts/new" "New post")]])
 
-(defn render [] (layout {:header (posts-header) :main (posts-list) :sidebar (new-post-sidebar) :footer (default-footer)}))
+(defn render [] (layout {:main (posts-list) :sidebar (new-post-sidebar)}))

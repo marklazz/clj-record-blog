@@ -9,7 +9,6 @@
  (layout {
           :main (post-form params "true")
           :sidebar (default-sidebar)
-          :footer (default-footer)
          }
   )
 )

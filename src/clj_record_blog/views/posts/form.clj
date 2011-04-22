@@ -12,6 +12,8 @@
   (if (empty? validation-result)
     ""
     [:div { :class "validation-errors" }
+     "Please fix the following errors before proceed:"
+     [:br]
      [:ul
         (for [ x [:title :body]]
           (if (nil? (validation/messages-for validation-result x))

@@ -2,10 +2,20 @@
   (:use [compojure.core]
         [clj-record-blog.models.post :as post]
         [clj-record-blog.views.layouts.application]
+        [hiccup.page-helpers]
         [hiccup.core]))
 
+;(defhtml posts-header []
+;  [:div#header-title [:h1 "Post lists"]])
+
 (defhtml posts-header []
-  [:div#header-title [:h1 "Post lists"]])
+  [:div
+    [:h1
+      (link-to "/" web-app-title)
+    ]
+    [:h2 "By Marcelo Giorgi"]
+   ]
+)
 
 (defhtml posts-list []
   [:div [:ul
@@ -14,7 +24,7 @@
          ]])
 
 (defn new-post-sidebar []
-  [:div
-   [:a { :href "/posts/new" } "New Post"]])
+  [:ul
+   [:li (link-to "/posts/new" "New post")]])
 
 (defn render [] (layout {:header (posts-header) :main (posts-list) :sidebar (new-post-sidebar) :footer (default-footer)}))

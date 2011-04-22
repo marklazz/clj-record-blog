@@ -7,8 +7,11 @@
 
 (defhtml posts-list []
   [:div [:ul
-            (for [x (post/find-records ["1=1"])]
-                   [:li (:title x)])
+            (for [post_instance (post/find-records ["1=1"])]
+                   [:li
+                      (link-to (str "/posts/" (:id post_instance)) (:title post_instance))
+                   ]
+            )
          ]])
 
 (defn new-post-sidebar []

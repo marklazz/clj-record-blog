@@ -16,7 +16,7 @@
 (defhtml layout [yield]
     [:html [:head
                 [:title "Sample Blog"]
-                ;(my-meta)
+                (my-meta)
                 [:link {:href "/style.css" :rel "stylesheet" :type "text/css"}]
             ]
             [:body

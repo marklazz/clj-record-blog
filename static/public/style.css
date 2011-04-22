@@ -23,3 +23,9 @@
 #footer h3 {
     font-size: 12px;
 }
+.validation-errors {
+  color: grey;
+  border-style:solid;
+  border-width:5px;
+  border-color: red;
+}

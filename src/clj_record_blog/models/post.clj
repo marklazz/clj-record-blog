@@ -4,6 +4,9 @@
   (:use [clj-record-blog.config.db]))
 
 (clj-record.core/init-model
+ (:validation
+    (:title "is empty" #(not (empty? %)))
+    (:body "is empty" #(not (empty? %))))
   (:associations
       (has-many comments)))
 

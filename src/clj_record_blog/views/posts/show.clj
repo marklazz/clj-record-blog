@@ -19,8 +19,6 @@
      [:div {:class "title"} (:title post)]
      [:br]
      [:div {:class "body"} (:body post)]
-     [:br]
-     (link-to "/" "All posts")
   ]
 )
 

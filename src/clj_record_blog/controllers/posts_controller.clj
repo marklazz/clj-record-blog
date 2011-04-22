@@ -1,6 +1,7 @@
 (ns clj-record-blog.controllers.posts-controller
   (:use [compojure.core]
         [hiccup.core]
+        [ring.util.response]
         [clj-haml])
   (:require [clj-record-blog.views.posts.index :as index]
             [clj-record-blog.models.post :as post_model]
@@ -24,7 +25,8 @@
 (defn create [params]
   (if (validation/valid? (post_model/validate params))
     ;; show new post
-    (show (:id (post_model/create { :title (:title params) :body (:body params)})))
+    (let [post (post_model/create { :title (:title params) :body (:body params)})]
+      (redirect (str "/posts/" (:id post))))
     ;; render post with validation errors
     (edit/render params))
 )

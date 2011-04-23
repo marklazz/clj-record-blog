@@ -22,7 +22,7 @@
      [:div {:class "body"} (:body post)]
      (comments/list-for-post post)
      [:a { :href "#" :class "add-comment-link" } "Add comment" ]
-     (comments/form {} false)
+     (comments/form { :post_id (:id post) } false)
   ]
 )
 

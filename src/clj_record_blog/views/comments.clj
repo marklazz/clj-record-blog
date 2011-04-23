@@ -28,7 +28,8 @@
 
 (defhtml form [params require_validation]
   [:div#comment-form
-    (form-to [:POST "/comments" ]
+    (form-to [:POST (str "/posts/" (:post_id params) "/comments") ]
+              (hidden-field :post_id (:post_id params))
               [:h3 "Create a comment"]
               [:br]
               (if (= require_validation true) (errors-for-comment params) "")
@@ -39,7 +40,7 @@
               [:div "Content"]
               (text-area :body (:body params))
               [:br]
-              (submit-button "Save")
+              [:input { :type "submit" :id "submit-comment-button" :value "Save" } ]
     )
   ]
 )

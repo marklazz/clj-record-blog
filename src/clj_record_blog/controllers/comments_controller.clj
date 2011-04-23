@@ -2,16 +2,18 @@
   (:use [compojure.core]
         [hiccup.core]
         [clj-haml])
-  (:require [clj-json.core :as json]
-            [clj-record-blog.models.comment :as comment_model]
+  (:require [clj-record-blog.models.comment :as comment_model]
             [clj-record.validation :as validation]
             ))
 
 (defn create [params]
- (if (validation/valid? (comment_model/validate params))
-    ;; send comment info
-    (let [comment (comment_model/create (select-keys params comment_model/attributes ))]
-      (json/generate-string { :status "ok" :name (:name comment) :body (:body comment) })
-    ;; send with validation errors
-    (json/generate-string { :status "error" :name (:name comment) :body (:body comment) })))
+ (let [comment_attrs (select-keys params comment_model/attributes)]
+  (
+    if (validation/valid? (comment_model/validate params))
+      ;; send comment info
+      (let [comment (comment_model/create comment_attrs)]
+        (merge comment_attrs { :status "ok" }))
+      ;; send with validation errors
+      (merge comment_attrs { :status "error" }))
+ )
 )

@@ -36,6 +36,7 @@
                 (include-css "/style.css" "/application.css")
                 (include-js "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
                 (include-js "/library.js")
+                (include-js "/jquery.form.js")
             ]
             [:body
               [:div#wrap

@@ -2,7 +2,7 @@
   (:require [clj-record-blog.models.post])
   (:use [clj-record-blog.config.db]))
 
-(def attributes [ :title :body :email ])
+(def attributes [ :name :body :email :post_id ])
 
 (clj-record.core/init-model
  (:validation

@@ -3,6 +3,7 @@
         [hiccup.core]
         [clj-haml])
   (:require [clj-record-blog.models.comment :as comment_model]
+            [clj-record-blog.views.comments :as comments]
             [clj-record.validation :as validation]
             ))
 
@@ -12,8 +13,8 @@
     if (validation/valid? (comment_model/validate params))
       ;; send comment info
       (let [comment (comment_model/create comment_attrs)]
-        (merge comment_attrs { :status "ok" }))
+        (comments/saved comment_attrs))
       ;; send with validation errors
-      (merge comment_attrs { :status "error" }))
+      (comments/not-saved comment_attrs))
  )
 )

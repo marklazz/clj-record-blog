@@ -1,6 +1,7 @@
 (ns clj-record-blog.views.posts.form
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
+        [clj-record-blog.helpers.application]
         [hiccup.core]
         [hiccup.form-helpers])
   (:require [clj-record-blog.models.post :as post_model]
@@ -9,20 +10,7 @@
 
 (defn errors-for-post [params]
   (let [validation-result (post_model/validate params)]
-  (if (empty? validation-result)
-    ""
-    [:div { :class "validation-errors" }
-     "Please fix the following errors before proceed:"
-     [:br]
-     [:ul
-        (for [ x post_model/attributes ]
-          (if (nil? (validation/messages-for validation-result x))
-            ""
-            [:li (str (name x) " " (first (validation/messages-for validation-result x))) ]
-          )
-        )
-     ]]
-  ))
+   (error-messages-for validation-result))
 )
 
 (defhtml render [params require_validation] (

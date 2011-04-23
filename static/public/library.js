@@ -1,3 +1,7 @@
+function updateViewHandlers () {
+  $('#comment-form form').ajaxForm({ dataType: 'script' });
+};
+
 $(function () {
   $('.add-comment-link').click(function () {
       $('#comment-form').slideDown();
@@ -5,14 +9,5 @@ $(function () {
       return false;
   });
 
-  $('#comment-form form').ajaxForm({
-    dataType: 'json',
-    success: function (responseText, statusText, xhr, $form) {
-      if (responseText.status == 'ok') {
-        console.log('ok');
-      } else {
-        console.log('error');
-      }
-    }
-  });
+  updateViewHandlers();
 });

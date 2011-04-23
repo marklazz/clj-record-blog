@@ -35,7 +35,7 @@
     (GET "/posts/:id" [id] (posts_controller/show id))
     (POST "/posts" {params :params} (posts_controller/create params))
     ;(DELETE "/posts/:id" [id] (posts_controller/destroy id))
-    (POST "/posts/:post_id/comments" { params :params } (json-response (comments_controller/create params)))
+    (POST "/posts/:post_id/comments" { params :params } (comments_controller/create params))
     ;(DELETE "/posts/:post_id/comments/:id" [post_id id] (comments_controller/destroy post_id id))
     (route/resources "/")
     (route/not-found "<h1>Page not found</h1>")

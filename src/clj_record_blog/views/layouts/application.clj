@@ -35,6 +35,7 @@
                 (my-meta)
                 (include-css "/style.css" "/application.css")
                 (include-js "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+                (include-js "/library.js")
             ]
             [:body
               [:div#wrap

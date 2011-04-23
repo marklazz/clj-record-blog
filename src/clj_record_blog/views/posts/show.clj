@@ -1,6 +1,7 @@
 (ns clj-record-blog.views.posts.show
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
+        [clj-record-blog.views.comments :as comments]
         [hiccup.core]
         [hiccup.page-helpers]))
 
@@ -19,6 +20,9 @@
      [:div {:class "title"} (:title post)]
      [:br]
      [:div {:class "body"} (:body post)]
+     (comments/list-for-post post)
+     [:a { :href "#" :class "add-comment-link" } "Add comment" ]
+     (comments/form {} false)
   ]
 )
 

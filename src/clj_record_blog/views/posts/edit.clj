@@ -1,13 +1,14 @@
 (ns clj-record-blog.views.posts.edit
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
-        [clj-record-blog.views.posts.form]
         [hiccup.core]
-        [hiccup.form-helpers]))
+        [hiccup.form-helpers])
+  (:require
+        [clj-record-blog.views.posts.form :as form]))
 
 (defn render [params]
  (layout {
-          :main (post-form params true)
+          :main (form/render params true)
           :sidebar (default-sidebar)
          }
   )

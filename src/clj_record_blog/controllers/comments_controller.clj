@@ -2,16 +2,16 @@
   (:use [compojure.core]
         [hiccup.core]
         [clj-haml])
-  (:require [clj-record-blog.views.comments.index :as index]
-            [clj-record-blog.views.comments.create :as create]
-            [clj-record-blog.views.comments.new :as new_page]
-            [clj-json.core :as json]))
+  (:require [clj-json.core :as json]
+            [clj-record-blog.models.comment :as comment_model]
+            [clj-record.validation :as validation]
+            ))
 
-(defn json-response [data & [status]]
-  {:status (or status 200)
-   :headers {"Content-Type" "application/json"}
-   :body (json/generate-string data)})
-
-
-
-
+(defn create [params]
+ (if (validation/valid? (comment_model/validate params))
+    ;; send comment info
+    (let [comment (comment_model/create (select-keys params comment_model/attributes ))]
+      (json/generate-string { :status "ok" :name (:name comment) :body (:body comment) })
+    ;; send with validation errors
+    (json/generate-string { :status "error" :name (:name comment) :body (:body comment) })))
+)

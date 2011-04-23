@@ -6,6 +6,8 @@
                  [compojure "0.6.2"]
                  [hiccup "0.3.4"]
                  [clj-haml "0.2.1-SNAPSHOT"]
+                 [clj-json "0.3.2"]
+                 [org.clojars.sivajag/clj-record "1.0-SNAPSHOT"]
                  [mysql/mysql-connector-java "5.1.13"]]
   :dev-dependencies [[lein-ring "0.4.0"]]
   :resources-path "static"

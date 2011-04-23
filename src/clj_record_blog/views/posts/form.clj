@@ -15,7 +15,7 @@
      "Please fix the following errors before proceed:"
      [:br]
      [:ul
-        (for [ x [:title :body]]
+        (for [ x post_model/attributes ]
           (if (nil? (validation/messages-for validation-result x))
             ""
             [:li (str (name x) " " (first (validation/messages-for validation-result x))) ]
@@ -29,7 +29,7 @@
     form-to [:POST "/posts" ]
             [:h3 "Create a new post"]
             [:br]
-            (if (= require_validation "true") (errors-for-post params) "")
+            (if (= require_validation true) (errors-for-post params) "")
             [:div "Title"]
             (text-field :title (:title params))
             [:div "Content"]

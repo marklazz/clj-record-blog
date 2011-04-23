@@ -20,13 +20,14 @@
        (show/render post))
 )
 
-(defn edit [params] (edit/render params))
+(defn edit [params]
+ (edit/render params))
 
 (defn create [params]
-  (if (validation/valid? (post_model/validate params))
+ (if (validation/valid? (post_model/validate params))
     ;; show new post
     (let [post (post_model/create { :title (:title params) :body (:body params)})]
       (redirect (str "/posts/" (:id post))))
     ;; render post with validation errors
-    (edit/render params))
+    (edit params))
 )

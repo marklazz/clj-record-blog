@@ -7,7 +7,7 @@
 
 (defn render [params]
  (layout {
-          :main (post-form params "true")
+          :main (post-form params true)
           :sidebar (default-sidebar)
          }
   )

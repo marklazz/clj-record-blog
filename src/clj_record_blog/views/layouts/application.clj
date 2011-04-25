@@ -1,7 +1,10 @@
 (ns clj-record-blog.views.layouts.application
   (:use [compojure.core]
+        [hiccup.form-helpers]
         [hiccup.page-helpers]
-        [hiccup.core]))
+        [clj-record-blog.helpers.application]
+        [hiccup.core])
+  (:require [clj-record-blog.middleware :as mdw]))
 
 (defhtml my-meta [] [:meta {:http-equiv "Content-type" :content "text/html;charset=UTF-8"}])
 
@@ -44,19 +47,16 @@
                 [:div#content
                   [:div.header (default-header)]
                   [:div.breadcrumbs
-                    (link-to "/" "Home")
-                    (if (= "/" "/") ; obtain the request here to determine relative path
-                      " - You are here"
-                      ""
+                    (if (logged-in)
+                      [:div#logout-form-container
+                        [:div#logout-form (form-to [:DELETE "/session"]) ]
+                        [:a { :href "/session" :method "_delete" :id "logout-link" } "Logout" ]
+                      ]
+                      (link-to "/session/new" "Login")
                     )
                   ]
                   [:div.middle
                     (:main yield)
-;                    [:h2 "Template dummy text"]
-                      ;"Just to fill out empty space in the template I decided to write this and to add one of my previous templates
-                      ;here. There are direct links to view one of my previous templates live and live link to download it also ;) 
-                      ;Anyway hope you like both this one and previous one. You can see all of my templates at"
-                    ;]
                   ]
                   [:div.right
                     [:h2 "Navigation"]
@@ -70,9 +70,3 @@
             ]
   )
 )
-
-;                [:div#header (:header yield)]
-                ;[:div#main (:main yield)]
-                ;[:div#sidebar (:sidebar yield)]
-                ;[:div#footer (:footer yield)]
-

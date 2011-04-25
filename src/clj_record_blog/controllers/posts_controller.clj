@@ -1,8 +1,7 @@
 (ns clj-record-blog.controllers.posts-controller
   (:use [compojure.core]
         [hiccup.core]
-        [ring.util.response]
-        [clj-haml])
+        [ring.util.response])
   (:require [clj-record-blog.views.posts.index :as index]
             [clj-record-blog.models.post :as post_model]
             [clj-record.validation :as validation]

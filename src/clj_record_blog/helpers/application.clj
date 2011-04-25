@@ -1,7 +1,9 @@
 (ns clj-record-blog.helpers.application
   (:use [compojure.core]
         [hiccup.core])
-  (:require [clj-record.validation :as validation]))
+  (:require
+    [clj-record-blog.middleware :as mdw]
+    [clj-record.validation :as validation]))
 
 (defn escape-js
   "Change special characters for js."
@@ -24,3 +26,6 @@
   )
 )
 
+(defn logged-in []
+  (not (nil? (:name mdw/*session*)))
+)

@@ -1,7 +1,6 @@
 (ns clj-record-blog.controllers.comments-controller
   (:use [compojure.core]
-        [hiccup.core]
-        [clj-haml])
+        [hiccup.core])
   (:require [clj-record-blog.models.comment :as comment_model]
             [clj-record-blog.views.comments :as comments]
             [clj-record.validation :as validation]

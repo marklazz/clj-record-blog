@@ -58,3 +58,6 @@
 .add-comment-link {
 
 }
+#logout-form {
+  display: none;
+}

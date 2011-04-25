@@ -2,6 +2,7 @@
   (:use [compojure.core]
         [clj-record-blog.models.post :as post]
         [clj-record-blog.views.layouts.application]
+        [clj-record-blog.helpers.application]
         [hiccup.page-helpers]
         [hiccup.core]))
 
@@ -15,7 +16,11 @@
          ]])
 
 (defn new-post-sidebar []
-  [:ul
-   [:li (link-to "/posts/new" "New post")]])
+  (if (logged-in)
+    [:ul
+      [:li (link-to "/posts/new" "New post") ]
+     ]
+    "")
+)
 
 (defn render [] (layout {:main (posts-list) :sidebar (new-post-sidebar)}))

@@ -9,5 +9,10 @@ $(function () {
       return false;
   });
 
+  $('#logout-link').click(function () {
+    $('#logout-form form').submit();
+    return false;
+  })
+
   updateViewHandlers();
 });

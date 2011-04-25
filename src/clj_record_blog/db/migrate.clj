@@ -2,7 +2,7 @@
   (:use [clojure.contrib.sql]
         [clj-record-blog.config.db]))
 
-(defn create-blog
+(defn create-blog-with-db
   "Setup my database" [db]
   (with-connection db
     (create-table
@@ -19,7 +19,7 @@
      [:body :text]
      [:post_id :integer])))
 
-(defn drop-blog
+(defn drop-blog-with-db
   "Drop all tables" [db]
   (with-connection db
     (try
@@ -27,3 +27,5 @@
        (drop-table :posts)
        (drop-table :comments))
      (catch Exception _))))
+
+(defn create-blog [] (create-blog-with-db db))

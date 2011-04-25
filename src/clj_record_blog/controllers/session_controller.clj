@@ -1,6 +1,7 @@
 (ns clj-record-blog.controllers.session-controller
   (:use [compojure.core]
         [hiccup.core]
+        [clj-record-blog.config.db]
         [clojure.contrib.core]
         [ring.util.response])
   (:require
@@ -15,8 +16,8 @@
 (defn create [params]
   (if
     (and
-      (= "admin" (:name params))
-      (= "admin" (:password params)))
+      (= *user-name* (:name params))
+      (= *password* (:password params)))
         (-> (redirect "/posts")
             (assoc-in [:session :name] (:name params)))
         (form/render params true))

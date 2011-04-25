@@ -2,5 +2,4 @@ pom.xml
 *jar
 lib
 classes
-src/clj_record_blog/config/db.clj
 tmp/*

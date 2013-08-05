@@ -12,10 +12,10 @@
 
 ; define this bindings as an alternative to pass this vars through all routes (see http://zef.me/2650/on-language-design-magic-variables-in-compojure)
 ; and http://groups.google.com/group/compojure/browse_thread/thread/60497deb42ecfb8e
-(def *request* nil)
-(def *cookies* nil)
-(def *session* nil)
-(def *flash* nil)
-(def *params* nil)
+(def ^:dynamic *request* nil)
+(def ^:dynamic *cookies* nil)
+(def ^:dynamic *session* nil)
+(def ^:dynamic *flash* nil)
+(def ^:dynamic *params* nil)
 
 

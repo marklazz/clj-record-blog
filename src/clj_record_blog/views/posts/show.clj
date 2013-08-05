@@ -2,8 +2,9 @@
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
         [clj-record-blog.views.comments :as comments]
+        [hiccup.def]
         [hiccup.core]
-        [hiccup.page-helpers]))
+        [hiccup.page]))
 
 (defhtml show-post [post]
   [:div { :class "post-saved"}

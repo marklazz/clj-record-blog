@@ -3,7 +3,9 @@
         [clj-record-blog.models.post :as post]
         [clj-record-blog.views.layouts.application]
         [clj-record-blog.helpers.application]
-        [hiccup.page-helpers]
+        [hiccup.def]
+        [hiccup.element]
+        [hiccup.page]
         [hiccup.core]))
 
 (defhtml posts-list []

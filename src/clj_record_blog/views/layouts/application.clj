@@ -1,7 +1,9 @@
 (ns clj-record-blog.views.layouts.application
   (:use [compojure.core]
-        [hiccup.form-helpers]
-        [hiccup.page-helpers]
+        [hiccup.def]
+        [hiccup.element]
+        [hiccup.form]
+        [hiccup.page]
         [clj-record-blog.helpers.application]
         [hiccup.core])
   (:require [clj-record-blog.middleware :as mdw]))

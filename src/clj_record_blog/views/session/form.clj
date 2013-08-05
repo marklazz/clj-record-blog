@@ -1,8 +1,9 @@
 (ns clj-record-blog.views.session.form
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
-        [hiccup.page-helpers]
-        [hiccup.form-helpers]
+        [hiccup.def]
+        [hiccup.page]
+        [hiccup.form]
         [hiccup.core]))
 
 (defhtml login-form [params] (

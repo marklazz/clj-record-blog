@@ -2,8 +2,10 @@
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
         [clj-record-blog.helpers.application]
+        [hiccup.def]
+        [hiccup.form]
         [hiccup.core]
-        [hiccup.form-helpers])
+        [hiccup.form])
   (:require [clj-record-blog.models.post :as post_model]
             [clj-record.validation :as validation])
 )

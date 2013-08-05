@@ -1,5 +1,6 @@
 (ns clj-record-blog.helpers.application
   (:use [compojure.core]
+        [hiccup.def]
         [hiccup.core])
   (:require
     [clj-record-blog.middleware :as mdw]

@@ -1,12 +1,12 @@
 (ns clj-record-blog.db.util
-  (:use [clojure.contrib.sql])
-)
+  (:use [clj-record-blog.config.db])
+  (:require [clojure.java.jdbc :as jdbc]))
 
 (defn ask-sql
   "Returns a seq of maps with the contents of an sql command."
   [db query]
-  (with-connection db
-    (with-query-results rs [query]
+  (jdbc/with-connection db
+    (jdbc/with-query-results rs [query]
       (doall (map identity rs)))))
 
 (defn SELECT
@@ -19,21 +19,21 @@
 (defn INSERT
   "A generic insert function."
   [db table map]
-  (with-connection db
-    (insert-values table
+  (jdbc/with-connection db
+    (jdbc/insert-values table
                    (keys map)
                    (vals map))))
 (defn UPDATE
   "A generic update function -- based on id."
   [db table id a-map]
-  (with-connection db
-    (update-values table ["id=?" id] a-map)))
+  (jdbc/with-connection db
+    (jdbc/update-values table ["id=?" id] a-map)))
 
 (defn REMOVE
   "A generic delete function -- based on id."
   [db table id]
-  (with-connection db
-    (delete-rows table ["id=?" id])))
+  (jdbc/with-connection db
+    (jdbc/delete-rows table ["id=?" id])))
 
 (defn all-posts
   "Retreive all posts"

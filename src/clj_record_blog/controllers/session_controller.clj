@@ -2,7 +2,6 @@
   (:use [compojure.core]
         [hiccup.core]
         [clj-record-blog.config.db]
-        [clojure.contrib.core]
         [ring.util.response])
   (:require
         [clj-record-blog.middleware :as mdw]

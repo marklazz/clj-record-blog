@@ -2,7 +2,7 @@
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
         [hiccup.core]
-        [hiccup.form-helpers])
+        [hiccup.form])
   (:require
         [clj-record-blog.views.posts.form :as form]))
 

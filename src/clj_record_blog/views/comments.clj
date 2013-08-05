@@ -2,9 +2,10 @@
   (:use [compojure.core]
         [clj-record-blog.views.layouts.application]
         [clj-record-blog.helpers.application]
+        [hiccup.def]
         [hiccup.core]
-        [hiccup.page-helpers]
-        [hiccup.form-helpers])
+        [hiccup.page]
+        [hiccup.form])
   (:require [clj-record-blog.models.comment :as comment_model]
             [clj-record-blog.models.post :as post_model]
             [clj-record.validation :as validation])
